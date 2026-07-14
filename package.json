@@ -5,9 +5,18 @@
   "type": "module",
   "license": "MIT",
   "author": "Levi Utima",
-  "keywords": ["fsd", "feature-sliced-design", "scaffold", "cli", "vite", "next", "expo", "react-native"],
+  "keywords": [
+    "fsd",
+    "feature-sliced-design",
+    "scaffold",
+    "cli",
+    "vite",
+    "next",
+    "expo",
+    "react-native"
+  ],
   "bin": {
-    "create-fsd-app": "./dist/index.js"
+    "create-fsd-app": "dist/index.js"
   },
   "files": [
     "dist",
