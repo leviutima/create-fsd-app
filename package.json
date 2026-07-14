@@ -1,5 +1,5 @@
 {
-  "name": "@levi/create-fsd-app",
+  "name": "@leviutima/create-fsd-app",
   "version": "0.1.0",
   "description": "Scaffold front-end projects with Feature-Sliced Design",
   "type": "module",

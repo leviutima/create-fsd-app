@@ -17,26 +17,23 @@ Este gerador cria o projeto já com:
 
 ## Instalação e uso
 
-Ainda não publicado no npm — por enquanto, use localmente:
+Publicado no npm como `@leviutima/create-fsd-app` (com escopo — o nome sem escopo `create-fsd-app` já pertence a outro pacote). Não precisa instalar nada antes, é só rodar via `npx`:
 
 ```bash
-git clone <este-repo>
-cd create-fsd-app
-npm install
-npm run build
-npm link
-```
-
-Depois disso, o comando `create-fsd-app` fica disponível globalmente:
-
-```bash
-create-fsd-app meu-projeto
+npx @leviutima/create-fsd-app meu-projeto
 ```
 
 Sem argumento, ele pergunta o nome do projeto e a stack via prompt interativo. Também dá pra passar tudo direto:
 
 ```bash
-create-fsd-app meu-projeto --template next
+npx @leviutima/create-fsd-app meu-projeto --template next
+```
+
+Se preferir instalar global em vez de usar `npx` toda vez:
+
+```bash
+npm install -g @leviutima/create-fsd-app
+create-fsd-app meu-projeto
 ```
 
 ### Opções
@@ -45,12 +42,6 @@ create-fsd-app meu-projeto --template next
 |---|---|---|
 | `[project-name]` | texto livre | Nome do projeto e da pasta criada (no diretório atual). Se omitido, é perguntado. |
 | `-t, --template <name>` | `vite` \| `next` \| `expo` | Qual stack usar. Se omitido, é perguntado. |
-
-Depois de publicado no npm, o uso via `npx` será:
-
-```bash
-npx @levi/create-fsd-app meu-projeto
-```
 
 ## Stacks suportadas
 
@@ -131,7 +122,7 @@ npm run build
 create-fsd-app teste --template vite   # usa o link global feito com `npm link`
 ```
 
-Se o comando `create-fsd-app` parar de funcionar depois de mexer no `bin` do `package.json`, rode `npm unlink -g @levi/create-fsd-app && npm link` de novo pra regenerar os shims globais.
+Se o comando `create-fsd-app` parar de funcionar depois de mexer no `bin` do `package.json`, rode `npm unlink -g @leviutima/create-fsd-app && npm link` de novo pra regenerar os shims globais.
 
 ## Licença
 
