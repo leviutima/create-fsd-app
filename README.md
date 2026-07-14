@@ -128,14 +128,14 @@ Se o comando `create-fsd-app` parar de funcionar depois de mexer no `bin` do `pa
 
 A publicação no npm é feita pelo GitHub Actions via **Trusted Publishing** (OIDC) — não existe token de npm guardado em lugar nenhum, nem manual nem em secret do repositório. Quem autoriza o publish é a combinação repositório + workflow, configurada uma vez em npmjs.com → pacote → Settings → Trusted Publisher.
 
-Pra cortar uma release:
+Pra cortar uma release, basta subir na `main` com a versão do `package.json` alterada:
 
 ```bash
-npm version patch   # ou minor / major — atualiza package.json e cria a tag
-git push --follow-tags
+npm version patch   # ou minor / major — só atualiza o package.json (e cria uma tag local, ignorada pelo workflow)
+git push
 ```
 
-O push da tag `vX.Y.Z` dispara o workflow [`.github/workflows/publish.yml`](.github/workflows/publish.yml), que builda e publica automaticamente. Também dá pra disparar manualmente pela aba Actions do GitHub (`workflow_dispatch`).
+Todo push na `main` dispara o workflow [`.github/workflows/publish.yml`](.github/workflows/publish.yml), que builda e compara a versão do `package.json` com a que já está publicada no registro: se for igual, pula o publish (sem erro); se for diferente, publica. Ou seja, esquecer de bumpar a versão não quebra o CI — só não publica nada. Também dá pra disparar manualmente pela aba Actions do GitHub (`workflow_dispatch`).
 
 ## Licença
 
