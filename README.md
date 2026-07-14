@@ -17,7 +17,7 @@ Este gerador cria o projeto já com:
 
 ## Instalação e uso
 
-Publicado no npm como `@leviutima/create-fsd-app` (com escopo — o nome sem escopo `create-fsd-app` já pertence a outro pacote). Não precisa instalar nada antes, é só rodar via `npx`:
+Distribuído no npm como `@leviutima/create-fsd-app` (com escopo — o nome sem escopo `create-fsd-app` já pertence a outro pacote). Não precisa instalar nada antes, é só rodar via `npx`:
 
 ```bash
 npx @leviutima/create-fsd-app meu-projeto
@@ -123,6 +123,19 @@ create-fsd-app teste --template vite   # usa o link global feito com `npm link`
 ```
 
 Se o comando `create-fsd-app` parar de funcionar depois de mexer no `bin` do `package.json`, rode `npm unlink -g @leviutima/create-fsd-app && npm link` de novo pra regenerar os shims globais.
+
+## Publicando uma nova versão
+
+A publicação no npm é feita pelo GitHub Actions via **Trusted Publishing** (OIDC) — não existe token de npm guardado em lugar nenhum, nem manual nem em secret do repositório. Quem autoriza o publish é a combinação repositório + workflow, configurada uma vez em npmjs.com → pacote → Settings → Trusted Publisher.
+
+Pra cortar uma release:
+
+```bash
+npm version patch   # ou minor / major — atualiza package.json e cria a tag
+git push --follow-tags
+```
+
+O push da tag `vX.Y.Z` dispara o workflow [`.github/workflows/publish.yml`](.github/workflows/publish.yml), que builda e publica automaticamente. Também dá pra disparar manualmente pela aba Actions do GitHub (`workflow_dispatch`).
 
 ## Licença
 
